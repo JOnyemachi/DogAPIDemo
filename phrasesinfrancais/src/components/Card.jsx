@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import './Card.css'
 
 
@@ -22,21 +22,24 @@ const Card = (props) => {
         }
     }
     */
+
+    const [flip, setFlip] = useState(false);
+
+  
+    
     return(
-     <div className = "flashcard">
-            <div className = "flashcard-inner">
-                <div className="flashcard-front">
-                <p>{props.frontText}</p>
-
-                </div>
-
-                <div className = "flashcard-back">
-                <p>{props.backText}</p>
-                </div>
+     <div className = {`flashcard ${flip ? "flip" : ""}`}>
+            <div className="flashcard-front" onClick = {() => setFlip(!flip)} > 
+                    <div className = "flashcard-inner">
+                        <p>{props.frontText}</p>
+                    </div>
             </div>
+            <div className = "flashcard-back" onClick = {() => setFlip(!flip)}>
+                <console className="log"> The flip is working</console>
+                <p>{props.backText}</p>
+            </div>
+     </div>
 
-         
-      </div>
     )
 }
 

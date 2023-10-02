@@ -81,9 +81,10 @@ const App = () => {
 
   //make an array of objects to hold data.
   const [count, setCount] = useState(0) // usestate to change states. need to iterate through this count. 
+  
   //to do this, will have to change this setCount to iterate through cards
-  //only want text on card when it finishes. 
 
+  //need new state to pass original array to. This new array will be manipulated so that original can be sorted
 
   //next button
   const nextClick = () => {
@@ -95,6 +96,13 @@ const App = () => {
     setCount(count - 1);
   }
 
+  //function to updateCount, when count is > 10 OR 
+
+  //use state to store imput from user
+  const formFill = () => {
+    const [answer, setAnswer] = useState('')
+  }
+
   return (
       <div className="App">
         <h1>Phrases in Français	</h1>
@@ -102,6 +110,16 @@ const App = () => {
         <h3> Number of cards: 10</h3>
 
         <Card frontText={data[count].frontText} backText = {data[count].backText}/>
+
+        <form>
+        <label>Insert label here: </label>
+        <input
+          type = "text"
+          required
+        />
+        <button>Submit</button>
+        </form>
+
         <button onClick = {prevClick} className= "prevBtn"> Previous</button>
         <button onClick = {nextClick} className= "nextBtn"> Next</button>
     </div>

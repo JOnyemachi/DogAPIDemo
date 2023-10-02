@@ -1,11 +1,17 @@
-.flashcard {
+/*.flashcard {
+    position: relative;
+    width: 600px;
+    height: 300px;
     border: 1px solid rgba(153, 153, 153, 0.497);
     padding: 20px;
     margin-top: 25px;
-    width: 600px;
-    height: 300px;
     align-items: center;
     line-height: 0.5;
+    transform: rotateY(var(--rotate-y, 0));
+    perspective: 1000px;
+    transform-style: preserve-3d;
+    transition: 150ms;
+  
   }
 
   .flashcard-inner {
@@ -25,10 +31,65 @@
   .flip-card-front {
     background-color: #bbb;
     color: black;
+    backface-visibility: hidden;
   }
 
   .flip-card-back {
     background-color: dodgerblue;
     color: white;
     transform: rotateY(180deg);
+    backface-visibility: hidden;
+  }
+  */
+ /*
+  .flashcard-grid {
+    display: grid;
+    align-items: center;
+    grid-template-columns: repeat(auto-fill, minmax(200px,1fr));
+    gap: 1rem;
+    margin: 20px 20 px 20 px 45px;
+    padding: 30px;
+  }
+*/
+  .flashcard {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    border-radius: 0.35rem;
+    box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.5);
+    background-color: rgba(245, 245, 245, 0.082);
+    transform-style: preserve-3d;
+    transition: 150ms;
+    cursor: pointer;
+    transform: perspective(1000px) rotateY(var(--rotate-y), 0) translateY(var(--translate-y,0));
+    height: 300px;
+    width: 600px;
+    margin: 30px;
+  }
+
+  .flashcard:hover {
+    --translate-y: -2px;
+    box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.5);
+    opacity: 1;
+  }
+
+  .flashcard.flip {
+    --rotate-y: 180deg;
+    opacity: 0;
+  }
+
+  .flashcard-front, .flashcard-back{
+    position:absolute;
+    padding: 10rem;
+    backface-visibility: hidden;
+  }
+
+  .flashcard-back {
+    transform: rotateY(180deg);
+  }
+
+  .flashcard-back p {
+    max-width: 75px;
   }
